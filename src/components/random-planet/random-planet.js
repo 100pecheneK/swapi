@@ -51,7 +51,6 @@ export default class RandomPlanet extends Component {
             .catch(this.onError)
     }
 
-    useEffect
 
     render() {
         const {planet, loading, error} = this.state
