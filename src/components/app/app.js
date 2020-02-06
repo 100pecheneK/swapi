@@ -34,10 +34,10 @@ export default class App extends Component {
             <ErrorBoundary>
                 <SwapiServiceProvider value={this.state.swapiService}>
                     <Header onServiceChange={this.onServiceChange}/>
+                    <RandomPlanet updateInterval={10000}/>
                     <PeoplePage/>
                     <PlanetPage/>
                     <StarshipPage/>
-                    <RandomPlanet updateInterval={10000}/>
                 </SwapiServiceProvider>
             </ErrorBoundary>
         )
