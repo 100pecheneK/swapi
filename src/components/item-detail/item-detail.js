@@ -2,6 +2,7 @@ import React, {Component} from "react"
 import ErrorMsg from "../error-msg"
 import Spinner from "../spinner"
 import ContainerDetailView from "../container-detail-view"
+import Invitation from "../invitation"
 
 const Record = ({item, field, label}) => {
     return (
@@ -16,7 +17,7 @@ export default class ItemDetail extends Component {
     state = {
         item: null,
         image: null,
-        loading: true
+        loading: true,
     }
 
     componentDidMount() {
@@ -36,7 +37,7 @@ export default class ItemDetail extends Component {
         this.setState({
             item,
             image: this.props.getImageUrl(item),
-            loading: false,
+            loading: false
         })
     }
 
@@ -52,8 +53,10 @@ export default class ItemDetail extends Component {
     updateItem() {
         const {itemId, getData} = this.props
         if (!itemId) {
+            this.setState({item: null, image: null, needToShow: false})
             return
         }
+        this.setState({item: true, image: true})
         getData(itemId)
             .then(this.onItemLoaded)
             .catch(this.onError)
@@ -62,11 +65,15 @@ export default class ItemDetail extends Component {
 
     render() {
         const {item, image, loading, error} = this.state
-
+        if (!item) {
+            return <ContainerDetailView contentDetail={<Invitation/>}/>
+        }
         const hasData = !(error || loading)
         const errorMsg = error ? <ErrorMsg/> : null
         const spinner = loading ? <Spinner/> : null
-        const itemDetail = hasData ? <ItemView item={item} image={image} children={this.props.children}/> : null
+
+        const itemDetail = hasData ?
+            <ItemView item={item} image={image} children={this.props.children}/> : null
 
         const content = (
             <React.Fragment>

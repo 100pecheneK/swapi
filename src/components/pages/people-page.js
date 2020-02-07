@@ -1,25 +1,23 @@
-import React, {Component} from "react"
+import React, {useEffect} from "react"
 import {PersonDetails, PersonList} from "../sw-components"
+import {withRouter} from "react-router-dom"
 import scrollToTop from "../../services/scrollToTop"
 
-export default class PeoplePage extends Component {
-    state = {
-        selectedItem: 1
+const PeoplePage = ({history, match}) => {
+    const {id} = match.params
+    const useScroll = (value) => {
+        useEffect(() => {
+            scrollToTop()
+        }, [value])
     }
-    onItemSelected = (selectedItem) => {
-        scrollToTop()
-        this.setState({selectedItem})
-    }
+    useScroll(id)
 
-    render() {
-        const {selectedItem} = this.state
-        return (
-            <React.Fragment>
-                <PersonDetails itemId={selectedItem}/>
-                <PersonList
-                    onItemSelected={this.onItemSelected}/>
-            </React.Fragment>
-        )
-    }
-
+    return (
+        <React.Fragment>
+            <PersonDetails itemId={id}/>
+            <PersonList
+                onItemSelected={(id) => history.push(id)}/>
+        </React.Fragment>
+    )
 }
+export default withRouter(PeoplePage)

@@ -13,7 +13,6 @@ import {
     StarshipsPage
 } from "../pages"
 import {BrowserRouter as Router, Route} from "react-router-dom"
-import {PersonDetails} from "../sw-components/"
 
 export default class App extends Component {
 
@@ -38,17 +37,10 @@ export default class App extends Component {
                         <Header onServiceChange={this.onServiceChange}/>
 
                         <Route path="/" render={() => <h1>Hello!</h1>} exact/>
-                        <Route path="/people" component={PeoplePage} exact/>
-                        <Route path="/people/:id"
-                               render={({match}) => {
-                                   const {id} = match.params
-                                   return <PersonDetails itemId={id}/>
-                               }}/>
 
-                        <Route path="/planets" component={PlanetsPage} exact/>
-
-                        <Route path="/starships" component={StarshipsPage}/>
-
+                        <Route path="/people/:id?" component={PeoplePage}/>
+                        <Route path="/planets/:id?" component={PlanetsPage}/>
+                        <Route path="/starships/:id?" component={StarshipsPage}/>
 
 
                         <RandomPlanet updateInterval={10000}/>

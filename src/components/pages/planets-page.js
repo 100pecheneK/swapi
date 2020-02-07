@@ -1,25 +1,19 @@
-import React, {Component} from "react"
+import React, {useEffect} from "react"
 import {PlanetDetails, PlanetList} from "../sw-components"
+import {withRouter} from "react-router-dom"
 import scrollToTop from "../../services/scrollToTop"
 
-export default class PlanetsPage extends Component {
-    state = {
-        selectedItem: 1
-    }
-    onItemSelected = (selectedItem) => {
+const PlanetsPage = ({history, match}) => {
+    const {id} = match.params
+    useEffect(() => {
         scrollToTop()
-        this.setState({selectedItem})
-    }
-
-    render() {
-        const {selectedItem} = this.state
-        return (
-            <React.Fragment>
-                <PlanetDetails itemId={selectedItem}/>
-                    <PlanetList
-                        onItemSelected={this.onItemSelected}/>
-            </React.Fragment>
-        )
-    }
-
+    }, [id])
+    return (
+        <React.Fragment>
+            <PlanetDetails itemId={id}/>
+            <PlanetList
+                onItemSelected={(id) => history.push(id)}/>
+        </React.Fragment>
+    )
 }
+export default withRouter(PlanetsPage)

@@ -11,13 +11,13 @@ const Header = ({onServiceChange}) => {
             </button>
             <div className="collapse navbar-collapse" id="navbarNav">
                 <ul className="navbar-nav">
-                    <Link to="/people" className="list-group-item list-group-item-action elegant-color">
+                    <Link to="/people/" className="list-group-item list-group-item-action elegant-color">
                         People
                     </Link>
-                    <Link to="/planets" className="list-group-item list-group-item-action elegant-color">
+                    <Link to="/planets/" className="list-group-item list-group-item-action elegant-color">
                         Planets
                     </Link>
-                    <Link to="/starships" className="list-group-item list-group-item-action elegant-color">
+                    <Link to="/starships/" className="list-group-item list-group-item-action elegant-color">
                         Starships
                     </Link>
                     <button className="list-group-item list-group-item-action elegant-color-dark"
