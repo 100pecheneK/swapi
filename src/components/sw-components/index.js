@@ -1,5 +1,5 @@
 import PersonDetails from "./person-details"
-import PlanetDetails from "./planet-details"
+import PlanetDetails from "./planets-details"
 import StarshipDetails from "./starship-details"
 import {
     PersonList,

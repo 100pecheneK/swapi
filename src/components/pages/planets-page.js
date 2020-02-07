@@ -1,8 +1,8 @@
 import React, {Component} from "react"
-import {StarshipDetails, StarshipList} from "../sw-components"
+import {PlanetDetails, PlanetList} from "../sw-components"
 import scrollToTop from "../../services/scrollToTop"
 
-export default class StarshipPage extends Component {
+export default class PlanetsPage extends Component {
     state = {
         selectedItem: 1
     }
@@ -15,9 +15,9 @@ export default class StarshipPage extends Component {
         const {selectedItem} = this.state
         return (
             <React.Fragment>
-                <StarshipDetails itemId={selectedItem}/>
-                <StarshipList
-                    onItemSelected={this.onItemSelected}/>
+                <PlanetDetails itemId={selectedItem}/>
+                    <PlanetList
+                        onItemSelected={this.onItemSelected}/>
             </React.Fragment>
         )
     }

@@ -6,24 +6,19 @@ import ErrorMsg from "../error-msg"
 import ContainerDetailView from "../container-detail-view"
 import ErrorBoundary from "../error-boundary"
 
-
 export default class RandomPlanet extends Component {
     static defaultProps = {
-        updateInterval: 5000
+        updateInterval: 3000
     }
-
     static propTypes = {
         updateInterval: PropTypes.number
 
     }
-
-    swapiService = new SwapiService()
-
-
     state = {
-        planet: {},
-        loading: true,
+        planet: null,
+        loading: true
     }
+    swapiService = new SwapiService()
 
     componentDidMount() {
         const {updateInterval} = this.props

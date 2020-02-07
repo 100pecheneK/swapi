@@ -2,7 +2,7 @@ import ItemDetail, {Record} from "../item-detail"
 import React from "react"
 import {withSwapiService} from "../hoc-helper"
 
-const PlanetDetails = (props) => {
+const PlanetsDetails = (props) => {
     return (
         <ItemDetail {...props}>
             <Record field="name" label="Name"/>
@@ -18,4 +18,4 @@ const mapMethodsToProps = (swapiService) => {
         getImageUrl: swapiService.getPlanetImage
     }
 }
-export default withSwapiService(mapMethodsToProps)(PlanetDetails)
+export default withSwapiService(mapMethodsToProps)(PlanetsDetails)

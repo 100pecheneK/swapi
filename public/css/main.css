@@ -8,16 +8,20 @@ body {
 .img {
     width: 200px;
 }
+h1 {
+    color: white;
+}
+
 b {
     font-weight: bold;
 }
-button {
+button, a {
     z-index: 0;
     color: rgb(192, 192, 192) !important;
     transition: 0.4s;
 }
 
-button:hover {
+button:hover, a:hover {
     transition: 0.2s;
     cursor: pointer;
     transform: scale(1.1);
@@ -26,7 +30,7 @@ button:hover {
     color: white !important;
 }
 
-button:active {
+button:active, a:active {
     transform: scale(0.9);
 }
 

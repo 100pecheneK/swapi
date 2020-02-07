@@ -41,7 +41,7 @@ export default class ItemDetail extends Component {
     }
 
     onError = (err) => {
-        console.log('Error:')
+        console.log('💩💩💩')
         console.log(err)
         this.setState({
             error: true,
