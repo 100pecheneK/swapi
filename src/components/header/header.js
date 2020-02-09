@@ -4,7 +4,7 @@ import {Link} from "react-router-dom"
 const Header = ({onServiceChange}) => {
     return (
         <nav className="navbar navbar-expand-md navbar-dark elegant-color-dark">
-            <Link to="/" className="navbar-brand" href="/">SWAPI</Link>
+            <Link to="/" className="navbar-brand" href="/">Swapi</Link>
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"/>
@@ -24,6 +24,7 @@ const Header = ({onServiceChange}) => {
                             onClick={onServiceChange}>
                         Change Service
                     </button>
+                    <a href="https://vk.com/mistermihail23" className="list-group-item list-group-item-action elegant-color-dark">Developer</a>
                 </ul>
             </div>
         </nav>

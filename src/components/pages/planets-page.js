@@ -1,13 +1,15 @@
 import React, {useEffect} from "react"
 import {PlanetDetails, PlanetList} from "../sw-components"
 import {withRouter} from "react-router-dom"
-import scrollToTop from "../../services/scrollToTop"
-
-const PlanetsPage = ({history, match}) => {
-    const {id} = match.params
+import scrollToTop from "../scroller"
+const useScroll = (value) => {
     useEffect(() => {
         scrollToTop()
-    }, [id])
+    }, [value])
+}
+const PlanetsPage = ({history, match}) => {
+    const {id} = match.params
+    useScroll(id)
     return (
         <React.Fragment>
             <PlanetDetails itemId={id}/>

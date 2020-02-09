@@ -6,12 +6,15 @@ const BodySelect = (props) => {
     const {data, onItemSelected, children: renderLabel} = props
     const itemListContent = data ? data.map((item) => {
         const {id} = item
+
         const label = renderLabel(item)
+
         return (
             <button type="button"
                     className="list-group-item list-group-item-action elegant-color"
                     key={id}
                     onClick={() => {
+
                         onItemSelected(id)
                     }}>
                 {label}

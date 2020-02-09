@@ -1,17 +1,16 @@
 import React, {useEffect} from "react"
 import {PersonDetails, PersonList} from "../sw-components"
 import {withRouter} from "react-router-dom"
-import scrollToTop from "../../services/scrollToTop"
+import scrollToTop from "../scroller"
 
+const useScroll = (value) => {
+    useEffect(() => {
+        scrollToTop()
+    }, [value])
+}
 const PeoplePage = ({history, match}) => {
     const {id} = match.params
-    const useScroll = (value) => {
-        useEffect(() => {
-            scrollToTop()
-        }, [value])
-    }
     useScroll(id)
-
     return (
         <React.Fragment>
             <PersonDetails itemId={id}/>

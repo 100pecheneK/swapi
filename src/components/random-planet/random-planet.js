@@ -1,10 +1,10 @@
 import React, {Component} from "react"
 import PropTypes from 'prop-types'
-import SwapiService from "../../services/swapi-service"
 import Spinner from "../spinner"
 import ErrorMsg from "../error-msg"
 import ContainerDetailView from "../container-detail-view"
 import ErrorBoundary from "../error-boundary"
+import DjangoSwapiService from "../../services/django-swapi-service"
 
 export default class RandomPlanet extends Component {
     static defaultProps = {
@@ -18,7 +18,7 @@ export default class RandomPlanet extends Component {
         planet: null,
         loading: true
     }
-    swapiService = new SwapiService()
+    swapiService = new DjangoSwapiService()
 
     componentDidMount() {
         const {updateInterval} = this.props
@@ -40,7 +40,7 @@ export default class RandomPlanet extends Component {
     }
 
     updatePlanet = () => {
-        const id = Math.floor(Math.random() * 25) + 3
+        const id = Math.floor(Math.random() * 5) + 1
         this.swapiService.getPlanet(id)
             .then(this.onPlanetLoaded)
             .catch(this.onError)
@@ -80,7 +80,7 @@ const PlanetView = ({planet}) => {
     return (
         <React.Fragment>
             <div className="col-12 col-md-4 d-flex align-items-center justify-content-center">
-                <img src={`https://starwars-visualguide.com/assets/img/planets/${id}.jpg`}
+                <img src={`http://localhost:8000/media/image/planets/${id}.jpg`}
                      alt="" className="img img-fluid rounded z-depth-1"/>
             </div>
             <div className="col-12 col-md-8">
