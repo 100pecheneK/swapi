@@ -11,14 +11,13 @@ import {
     PeoplePage,
     PlanetsPage,
     StarshipsPage,
-    WelcomePage
+    WelcomePage,
 } from "../pages"
-import {BrowserRouter as Router, Route} from "react-router-dom"
+import {BrowserRouter as Router, Route, Switch, Redirect} from "react-router-dom"
 
 export default class App extends Component {
 
     state = {
-        selectedItem: Math.floor(Math.random() * 10) + 1,
         swapiService: new DjangoSwapiService(),
     }
     onServiceChange = () => {
@@ -36,12 +35,16 @@ export default class App extends Component {
                 <SwapiServiceProvider value={this.state.swapiService}>
                     <Router>
                         <Header onServiceChange={this.onServiceChange}/>
+                        <Switch>
+                            <Route path="/" render={() => <WelcomePage/>} exact/>
 
-                        <Route path="/" render={() => <WelcomePage/>} exact/>
+                            <Route path="/people/:id?" component={PeoplePage}/>
+                            <Route path="/planets/:id?" component={PlanetsPage}/>
+                            <Route path="/starships/:id?" component={StarshipsPage}/>
 
-                        <Route path="/people/:id?" component={PeoplePage}/>
-                        <Route path="/planets/:id?" component={PlanetsPage}/>
-                        <Route path="/starships/:id?" component={StarshipsPage}/>
+                            <Redirect to="/"/>
+                        </Switch>
+
 
                         <RandomPlanet updateInterval={10000}/>
                     </Router>
